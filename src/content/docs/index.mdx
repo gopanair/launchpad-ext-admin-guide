@@ -1,0 +1,43 @@
+---
+title: Launchpad admin guide
+description: Installing, configuring and running a Launchpad install.
+template: splash
+hero:
+  tagline: What to configure, in what order, and what each switch actually takes away.
+  actions:
+    - text: Ways to install
+      link: install/ways/
+      icon: right-arrow
+    - text: What is optional
+      link: capabilities/optional/
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid stagger>
+  <Card title="Install" icon="seti:docker">
+    One box with Docker Compose, or a cluster with the Helm chart — and what
+    happens on first run. [Ways to install](install/ways/)
+  </Card>
+  <Card title="Let people in" icon="approve-check">
+    Providers are database rows, not configuration files, and there is always
+    exactly one way in that needs no provider.
+    [Sign-in providers](identity/providers/)
+  </Card>
+  <Card title="Decide what is on" icon="setting">
+    Most capabilities are absent until configured — not disabled, absent.
+    [What is optional](capabilities/optional/)
+  </Card>
+  <Card title="Know what a switch does" icon="warning">
+    Several settings take a capability *away* rather than offering one. Those
+    are the ones worth reading before you flip.
+    [Anonymous access](security/anonymous/)
+  </Card>
+</CardGrid>
+
+:::note
+This guide is for people who run a Launchpad install. If you are deploying an
+app onto one, you want the **user guide** — a separate app, installable from
+the Gallery.
+:::
