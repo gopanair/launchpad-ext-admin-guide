@@ -7,6 +7,12 @@ Launchpad is a **single Go binary** that embeds its own web interface, migrates
 its own schema, and builds and runs the apps you give it. It needs Postgres and
 a place to put files. That is the whole dependency list.
 
+:::note
+This guide is for people who run a Launchpad install. If you are deploying an
+app onto one, you want the **user guide**; for `lp` and the app SDK, the **CLI
+and SDK guide**. Both are separate apps, installable from the gallery.
+:::
+
 ## The pieces
 
 | | |
