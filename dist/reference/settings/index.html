@@ -1,0 +1,700 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-vdxcvpsm"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Settings reference | Launchpad</title><link rel="shortcut icon" href="/apps/_admin-guide/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.2.9"/><meta name="generator" content="Starlight v0.41.9"/><meta property="og:title" content="Settings reference"/><meta property="og:type" content="article"/><meta property="og:locale" content="en"/><meta property="og:description" content="Every runtime setting, what it does, and where it is rendered."/><meta property="og:site_name" content="Launchpad"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Every runtime setting, what it does, and where it is rendered."/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/apps/_admin-guide/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/apps/_admin-guide/_astro/common.C6L0MlZI.css"><style>@layer starlight.components{.card:where(.astro-zts4jgjd){--sl-card-border:var(--sl-color-purple);--sl-card-bg:var(--sl-color-purple-low);border:1px solid var(--sl-color-gray-5);background-color:var(--sl-color-black);flex-direction:column;gap:clamp(.5rem,.125rem + 1vw,1rem);padding:clamp(1rem,.125rem + 3vw,2.5rem)}.card:where(.astro-zts4jgjd):nth-child(4n+1){--sl-card-border:var(--sl-color-orange);--sl-card-bg:var(--sl-color-orange-low)}.card:where(.astro-zts4jgjd):nth-child(4n+3){--sl-card-border:var(--sl-color-green);--sl-card-bg:var(--sl-color-green-low)}.card:where(.astro-zts4jgjd):nth-child(4n+4){--sl-card-border:var(--sl-color-red);--sl-card-bg:var(--sl-color-red-low)}.card:where(.astro-zts4jgjd):nth-child(4n+5){--sl-card-border:var(--sl-color-blue);--sl-card-bg:var(--sl-color-blue-low)}.title:where(.astro-zts4jgjd){font-weight:600;font-size:var(--sl-text-h4);color:var(--sl-color-white);line-height:var(--sl-line-height-headings);align-items:center;gap:1rem}.card:where(.astro-zts4jgjd) .icon:where(.astro-zts4jgjd){border:1px solid var(--sl-card-border);background-color:var(--sl-card-bg);border-radius:.25rem;flex-shrink:0;padding:.2em}.card:where(.astro-zts4jgjd) .body:where(.astro-zts4jgjd){font-size:clamp(var(--sl-text-sm), calc(.5rem + 1vw), var(--sl-text-body));margin:0}.card-grid:where(.astro-lmor3ela){grid-template-columns:100%;gap:1rem;display:grid}.card-grid:where(.astro-lmor3ela)>*{margin-top:0!important}@media (width>=50rem){.card-grid:where(.astro-lmor3ela){grid-template-columns:1fr 1fr;gap:1.5rem}.stagger:where(.astro-lmor3ela){--stagger-height:5rem;padding-bottom:var(--stagger-height)}.stagger:where(.astro-lmor3ela)>:nth-child(2n){transform:translateY(var(--stagger-height))}}}
+@layer starlight.components{svg:where(.astro-n5k4ipy7){color:var(--sl-icon-color);font-size:var(--sl-icon-size,1em);width:1em;height:1em}}
+</style><script type="module" src="/apps/_admin-guide/_astro/page.Dwipeu-R.js"></script></head><body class="astro-vdxcvpsm"><a class="sl-skip-link astro-vxeigawq" href="#_top">Skip to content</a><div class="page sl-flex astro-gqpr5s5a"><header class="header astro-gqpr5s5a"><div class="header astro-nczgtkxc"><div class="title-wrapper sl-flex astro-nczgtkxc"><a href="/apps/_admin-guide/" class="site-title sl-flex astro-clw6ags5"><img class="astro-clw6ags5" alt="Launchpad" src="/apps/_admin-guide/_astro/logo.HV1kWBx1.svg" width="48" height="46"><span class="astro-clw6ags5" translate="no">Launchpad</span></a></div><div class="sl-flex print:hidden astro-nczgtkxc"><site-search class="astro-nczgtkxc astro-r5ar4xm7" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-r5ar4xm7"><svg aria-hidden="true" class="astro-r5ar4xm7 astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-r5ar4xm7" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-r5ar4xm7" style="display: none;"><kbd class="astro-r5ar4xm7">Ctrl</kbd><kbd class="astro-r5ar4xm7">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-r5ar4xm7"><div class="dialog-frame sl-flex astro-r5ar4xm7"><button data-close-modal class="sl-flex md:sl-hidden astro-r5ar4xm7">Cancel</button><div class="search-container astro-r5ar4xm7"><div id="starlight__search" class="astro-r5ar4xm7"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/apps/_admin-guide/_astro/Search.astro_astro_type_script_index_0_lang.DWG81dVy.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-nczgtkxc"><div class="sl-flex social-icons astro-nczgtkxc"></div><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-gqpr5s5a" aria-label="Main"><starlight-menu-button class="print:hidden astro-vvx7mffu"><button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-vvx7mffu"><svg aria-hidden="true" class="open-menu astro-vvx7mffu astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-vvx7mffu astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg></button></starlight-menu-button><script type="module">var e=class extends HTMLElement{btn=this.querySelector(`button`);constructor(){super(),this.btn.addEventListener(`click`,()=>this.toggleExpanded());let e=this.closest(`nav`);e&&e.addEventListener(`keyup`,e=>this.closeOnEscape(e)),matchMedia(`(min-width: 50em)`).addEventListener(`change`,()=>this.setExpanded(!1))}setExpanded(e){this.setAttribute(`aria-expanded`,String(e)),document.body.toggleAttribute(`data-mobile-menu-expanded`,e),document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}toggleExpanded(){this.setExpanded(this.getAttribute(`aria-expanded`)!==`true`)}closeOnEscape(e){e.code===`Escape`&&(this.setExpanded(!1),this.btn.focus())}};customElements.define(`starlight-menu-button`,e);</script><div id="starlight__sidebar" class="sidebar-pane astro-gqpr5s5a"><div class="sidebar-content sl-flex astro-gqpr5s5a"><sl-sidebar-state-persist data-hash="0bcln02" class="astro-f5yvicm7"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-ojxuodky"><li class="astro-ojxuodky"><details open class="astro-ojxuodky"><summary class="astro-ojxuodky"><span class="group-label astro-ojxuodky"><span class="large astro-ojxuodky">Get started</span></span><svg aria-hidden="true" class="caret astro-ojxuodky astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-ojxuodky"><li class="astro-ojxuodky"><a href="/apps/_admin-guide/start/architecture/" class="astro-ojxuodky"><span class="astro-ojxuodky">What you are running</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/start/install-options/" class="astro-ojxuodky"><span class="astro-ojxuodky">Ways to install</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/start/first-run/" class="astro-ojxuodky"><span class="astro-ojxuodky">First run</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/start/upgrading/" class="astro-ojxuodky"><span class="astro-ojxuodky">Upgrading</span></a></li></ul></details></li><li class="astro-ojxuodky"><details open class="astro-ojxuodky"><summary class="astro-ojxuodky"><span class="group-label astro-ojxuodky"><span class="large astro-ojxuodky">Configuration</span></span><svg aria-hidden="true" class="caret astro-ojxuodky astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-ojxuodky"><li class="astro-ojxuodky"><a href="/apps/_admin-guide/config/configuration-vs-settings/" class="astro-ojxuodky"><span class="astro-ojxuodky">Configuration and settings</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/config/listeners-and-origins/" class="astro-ojxuodky"><span class="astro-ojxuodky">Listeners, origins and proxies</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/config/operating-dials/" class="astro-ojxuodky"><span class="astro-ojxuodky">The operating dials</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/config/retention/" class="astro-ojxuodky"><span class="astro-ojxuodky">Retention</span></a></li></ul></details></li><li class="astro-ojxuodky"><details open class="astro-ojxuodky"><summary class="astro-ojxuodky"><span class="group-label astro-ojxuodky"><span class="large astro-ojxuodky">Identity</span></span><svg aria-hidden="true" class="caret astro-ojxuodky astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-ojxuodky"><li class="astro-ojxuodky"><a href="/apps/_admin-guide/identity/providers/" class="astro-ojxuodky"><span class="astro-ojxuodky">Sign-in providers</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/identity/local-administrator/" class="astro-ojxuodky"><span class="astro-ojxuodky">The built-in administrator</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/identity/activation/" class="astro-ojxuodky"><span class="astro-ojxuodky">Accounts awaiting activation</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/identity/sessions/" class="astro-ojxuodky"><span class="astro-ojxuodky">Sessions</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/identity/users-and-roles/" class="astro-ojxuodky"><span class="astro-ojxuodky">Users and roles</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/identity/groups/" class="astro-ojxuodky"><span class="astro-ojxuodky">Groups</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/identity/directory-groups/" class="astro-ojxuodky"><span class="astro-ojxuodky">Directory groups</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/identity/directory-feed/" class="astro-ojxuodky"><span class="astro-ojxuodky">The directory feed (SCIM)</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/identity/offboarding/" class="astro-ojxuodky"><span class="astro-ojxuodky">Offboarding and dormancy</span></a></li></ul></details></li><li class="astro-ojxuodky"><details open class="astro-ojxuodky"><summary class="astro-ojxuodky"><span class="group-label astro-ojxuodky"><span class="large astro-ojxuodky">Apps and the estate</span></span><svg aria-hidden="true" class="caret astro-ojxuodky astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-ojxuodky"><li class="astro-ojxuodky"><a href="/apps/_admin-guide/apps/execution-modes/" class="astro-ojxuodky"><span class="astro-ojxuodky">Execution modes</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/apps/ownership-and-grants/" class="astro-ojxuodky"><span class="astro-ojxuodky">Ownership and grants</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/apps/listing/" class="astro-ojxuodky"><span class="astro-ojxuodky">Listing and access requests</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/apps/locking/" class="astro-ojxuodky"><span class="astro-ojxuodky">Locking and retirement</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/apps/quiet/" class="astro-ojxuodky"><span class="astro-ojxuodky">Quiet apps</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/apps/tags/" class="astro-ojxuodky"><span class="astro-ojxuodky">Tags</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/apps/releases/" class="astro-ojxuodky"><span class="astro-ojxuodky">Releases and retention</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/apps/artifact-store/" class="astro-ojxuodky"><span class="astro-ojxuodky">The artifact store</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/apps/estate-views/" class="astro-ojxuodky"><span class="astro-ojxuodky">The estate views</span></a></li></ul></details></li><li class="astro-ojxuodky"><details open class="astro-ojxuodky"><summary class="astro-ojxuodky"><span class="group-label astro-ojxuodky"><span class="large astro-ojxuodky">Builds</span></span><svg aria-hidden="true" class="caret astro-ojxuodky astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="astro-ojxuodky"><li class="astro-ojxuodky"><a href="/apps/_admin-guide/build/pipeline/" class="astro-ojxuodky"><span class="astro-ojxuodky">What a deploy does</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/build/queue-and-limits/" class="astro-ojxuodky"><span class="astro-ojxuodky">The build queue</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/build/cache/" class="astro-ojxuodky"><span class="astro-ojxuodky">The build cache</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/build/languages/" class="astro-ojxuodky"><span class="astro-ojxuodky">Language versions</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/build/runner-images/" class="astro-ojxuodky"><span class="astro-ojxuodky">Runner images</span></a></li></ul></details></li><li class="astro-ojxuodky"><details open class="astro-ojxuodky"><summary class="astro-ojxuodky"><span class="group-label astro-ojxuodky"><span class="large astro-ojxuodky">Security</span></span><svg aria-hidden="true" class="caret astro-ojxuodky astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="astro-ojxuodky"><li class="astro-ojxuodky"><a href="/apps/_admin-guide/security/isolation/" class="astro-ojxuodky"><span class="astro-ojxuodky">How apps are isolated</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/security/anonymous/" class="astro-ojxuodky"><span class="astro-ojxuodky">Anonymous access</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/security/reachability/" class="astro-ojxuodky"><span class="astro-ojxuodky">Reachability</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/security/sources/" class="astro-ojxuodky"><span class="astro-ojxuodky">Trusted app sources</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/security/git-connections/" class="astro-ojxuodky"><span class="astro-ojxuodky">Connected git hosts</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/security/dependencies/" class="astro-ojxuodky"><span class="astro-ojxuodky">Dependency policy</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/security/encryption/" class="astro-ojxuodky"><span class="astro-ojxuodky">At-rest encryption</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/security/keys/" class="astro-ojxuodky"><span class="astro-ojxuodky">Machine credentials</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/security/audit/" class="astro-ojxuodky"><span class="astro-ojxuodky">The audit log</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/security/scan-targets/" class="astro-ojxuodky"><span class="astro-ojxuodky">Scan targets</span></a></li></ul></details></li><li class="astro-ojxuodky"><details open class="astro-ojxuodky"><summary class="astro-ojxuodky"><span class="group-label astro-ojxuodky"><span class="large astro-ojxuodky">Capabilities</span></span><svg aria-hidden="true" class="caret astro-ojxuodky astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="astro-ojxuodky"><li class="astro-ojxuodky"><a href="/apps/_admin-guide/capabilities/optional/" class="astro-ojxuodky"><span class="astro-ojxuodky">What is optional</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/capabilities/storage/" class="astro-ojxuodky"><span class="astro-ojxuodky">App storage</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/capabilities/credentials/" class="astro-ojxuodky"><span class="astro-ojxuodky">The credentials broker</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/capabilities/integrations/" class="astro-ojxuodky"><span class="astro-ojxuodky">Integrations</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/capabilities/email/" class="astro-ojxuodky"><span class="astro-ojxuodky">Email and notifications</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/capabilities/announcements/" class="astro-ojxuodky"><span class="astro-ojxuodky">Announcements and messages</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/capabilities/gallery/" class="astro-ojxuodky"><span class="astro-ojxuodky">The gallery</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/capabilities/documentation/" class="astro-ojxuodky"><span class="astro-ojxuodky">Documentation</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/capabilities/telemetry/" class="astro-ojxuodky"><span class="astro-ojxuodky">Telemetry</span></a></li></ul></details></li><li class="astro-ojxuodky"><details open class="astro-ojxuodky"><summary class="astro-ojxuodky"><span class="group-label astro-ojxuodky"><span class="large astro-ojxuodky">Operating</span></span><svg aria-hidden="true" class="caret astro-ojxuodky astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="astro-ojxuodky"><li class="astro-ojxuodky"><a href="/apps/_admin-guide/operate/checks/" class="astro-ojxuodky"><span class="astro-ojxuodky">System checks</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/operate/health-and-processes/" class="astro-ojxuodky"><span class="astro-ojxuodky">Health and processes</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/operate/usage/" class="astro-ojxuodky"><span class="astro-ojxuodky">Usage and cost</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/operate/automation/" class="astro-ojxuodky"><span class="astro-ojxuodky">Automation</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/operate/licensing/" class="astro-ojxuodky"><span class="astro-ojxuodky">Licensing</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/operate/command-line/" class="astro-ojxuodky"><span class="astro-ojxuodky">The binary&#39;s subcommands</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/operate/troubleshooting/" class="astro-ojxuodky"><span class="astro-ojxuodky">Troubleshooting</span></a></li></ul></details></li><li class="astro-ojxuodky"><details open class="astro-ojxuodky"><summary class="astro-ojxuodky"><span class="group-label astro-ojxuodky"><span class="large astro-ojxuodky">Reference</span></span><svg aria-hidden="true" class="caret astro-ojxuodky astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="8"></sl-sidebar-restore><ul class="astro-ojxuodky"><li class="astro-ojxuodky"><a href="/apps/_admin-guide/reference/settings/" aria-current="page" class="astro-ojxuodky"><span class="astro-ojxuodky">Settings reference</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/reference/environment/" class="astro-ojxuodky"><span class="astro-ojxuodky">Environment reference</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/reference/admin-pages/" class="astro-ojxuodky"><span class="astro-ojxuodky">The admin pages</span></a></li><li class="astro-ojxuodky"><a href="/apps/_admin-guide/reference/checks-reference/" class="astro-ojxuodky"><span class="astro-ojxuodky">Checks reference</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-b5gddk54"><div class="social-icons astro-b5gddk54"></div></div></div></div></div></nav><div class="main-frame astro-gqpr5s5a"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-abfeecmu"><aside class="right-sidebar-container print:hidden astro-abfeecmu"><div class="right-sidebar astro-abfeecmu"><div class="lg:sl-hidden astro-q5mffni3"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-5ulgm6bh"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-5ulgm6bh"><details id="starlight__mobile-toc" class="astro-5ulgm6bh"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-5ulgm6bh"><span class="toggle sl-flex astro-5ulgm6bh">On this page<svg aria-hidden="true" class="caret astro-5ulgm6bh astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-5ulgm6bh"></span></summary><div class="dropdown astro-5ulgm6bh"><ul class="isMobile astro-cxyftcne" style="--depth: 0;"><li style="--depth: 0;" class="astro-cxyftcne"><a href="#_top" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Overview</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--settings" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Settings</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--authentication" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Authentication</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--messages" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Messages</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--dependencies" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Dependencies</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--sources" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Sources</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--email" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Email</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--telemetry" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Telemetry</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--integrations" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Integrations</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--api-keys" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → API keys</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--features" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Features</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--license" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → License</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#notes-on-a-few-of-them" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Notes on a few of them</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/apps/_admin-guide/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.BcSo_yiZ.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-q5mffni3"><div class="sl-container astro-q5mffni3"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-cxyftcne" style="--depth: 0;"><li style="--depth: 0;" class="astro-cxyftcne"><a href="#_top" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Overview</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--settings" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Settings</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--authentication" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Authentication</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--messages" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Messages</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--dependencies" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Dependencies</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--sources" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Sources</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--email" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Email</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--telemetry" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Telemetry</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--integrations" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Integrations</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--api-keys" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → API keys</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--features" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → Features</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#admin--license" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Admin → License</span></a></li><li style="--depth: 0;" class="astro-cxyftcne"><a href="#notes-on-a-few-of-them" style="--depth: 0;" class="astro-cxyftcne"><span style="--depth: 0;" class="astro-cxyftcne">Notes on a few of them</span></a></li></ul></nav></starlight-toc><script type="module" src="/apps/_admin-guide/_astro/TableOfContents.astro_astro_type_script_index_0_lang.Csloo1VZ.js"></script></div></div></div></aside><div class="main-pane astro-abfeecmu"><main data-pagefind-body class="astro-vdxcvpsm" lang="en" dir="ltr"><div class="content-panel astro-oil7k7jf"><div class="sl-container astro-oil7k7jf"><h1 id="_top" class="astro-2sm4b3ln">Settings reference</h1></div></div><div class="content-panel astro-oil7k7jf"><div class="sl-container astro-oil7k7jf"><div class="sl-markdown-content"><p>Every setting an administrator can change, by the name the API uses for it,
+grouped by the page that renders it.</p>
+<p>Ninety-three of them. <strong>A setting missing from this index is a test failure</strong> —
+the same index feeds the settings page, its filter, and the command palette, so a
+setting cannot be findable by one and invisible to another.</p>
+<p>Everything here is a <strong>database row</strong>, changed at runtime, <strong>audited</strong>, and needs
+no restart. For the environment side, see the <a href="../environment/">environment
+reference</a>. For the seven that are both, see <a href="../../config/operating-dials/">operating
+dials</a>.</p>
+<aside aria-label="Note" class="starlight-aside starlight-aside--note"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg>Note</p><div class="starlight-aside__content"><p><code dir="auto">⌘K</code> finds any of these by name and takes you to the control. That is usually
+faster than this page.</p></div></aside>
+<div class="sl-heading-wrapper level-h2"><h2 id="admin--settings">Admin → Settings</h2><a class="sl-anchor-link" href="#admin--settings"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Admin → Settings”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Name</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">public_base_url</code></td>
+<td>Address</td>
+<td>Where links in notification email point. Leave blank to use the address this install was started with.</td>
+</tr>
+<tr>
+<td><code dir="auto">security_txt_contact</code></td>
+<td>Security contact</td>
+<td>Where somebody who has found a problem should send it. Filling this in publishes /.well-known/security.txt; clearing it stops.</td>
+</tr>
+<tr>
+<td><code dir="auto">security_txt_expires</code></td>
+<td>Good until</td>
+<td>The date the published contact stops being a promise. Required whenever there is a contact.</td>
+</tr>
+<tr>
+<td><code dir="auto">security_txt_policy</code></td>
+<td>Disclosure policy</td>
+<td>An https:// page describing how you want problems reported. Optional.</td>
+</tr>
+<tr>
+<td><code dir="auto">security_txt_languages</code></td>
+<td>Preferred languages</td>
+<td>Language tags the mailbox above can read a report in, separated by commas. Optional.</td>
+</tr>
+<tr>
+<td><code dir="auto">isolated_execution_enabled</code></td>
+<td>Isolated execution</td>
+<td>Lets an app be promoted to its own workload, with its own network namespace and resource envelope.</td>
+</tr>
+<tr>
+<td><code dir="auto">default_execution_mode</code></td>
+<td>New apps are born</td>
+<td>Which mode an app is created in when whoever creates it does not say.</td>
+</tr>
+<tr>
+<td><code dir="auto">background_jobs_enabled</code></td>
+<td>Background jobs</td>
+<td>Lets isolated apps run scheduled and on-demand work as their own workload.</td>
+</tr>
+<tr>
+<td><code dir="auto">app_memory_limit_mb</code></td>
+<td>Memory limit per app</td>
+<td>How much memory one app’s workload may use before the platform restarts it, in MB or GB. 0 uses the install’s own figure.</td>
+</tr>
+<tr>
+<td><code dir="auto">app_cpu_request_millicores</code></td>
+<td>CPU reserved per app</td>
+<td>What each isolated workload reserves from the cluster scheduler, in millicores. 0 uses the install’s own figure.</td>
+</tr>
+<tr>
+<td><code dir="auto">app_cpu_limit_millicores</code></td>
+<td>CPU ceiling per app</td>
+<td>The most CPU one isolated workload may use, in millicores. 0 uses the install’s own figure, which is normally none.</td>
+</tr>
+<tr>
+<td><code dir="auto">max_concurrent_builds</code></td>
+<td>Builds at once</td>
+<td>How many deploys may be building at the same time. 0 uses the install’s MAX_CONCURRENT_BUILDS.</td>
+</tr>
+<tr>
+<td><code dir="auto">auto_deploy_poll_seconds</code></td>
+<td>Auto-deploy check interval</td>
+<td>How often the platform asks tracked branches for new commits. 0 uses the install’s AUTO_DEPLOY_POLL_INTERVAL.</td>
+</tr>
+<tr>
+<td><code dir="auto">r_package_repository</code></td>
+<td>R package repository</td>
+<td>Where R builds install binary packages from. Empty uses the install’s LAUNCHPAD_R_REPOS.</td>
+</tr>
+<tr>
+<td><code dir="auto">log_level</code></td>
+<td>Platform log level</td>
+<td>How much this platform writes about itself. Empty uses the install’s LOG_LEVEL.</td>
+</tr>
+<tr>
+<td><code dir="auto">job_concurrency_per_app</code></td>
+<td>Concurrent runs per app</td>
+<td>How many of one app’s runs may be in flight at once.</td>
+</tr>
+<tr>
+<td><code dir="auto">max_run_retries</code></td>
+<td>Most automatic retries</td>
+<td>The ceiling on how many extra attempts an automation may ask for. 0 turns retries off everywhere.</td>
+</tr>
+<tr>
+<td><code dir="auto">notebook_render_timeout_seconds</code></td>
+<td>Let a notebook render for</td>
+<td>How long a notebook’s cells may take to run during a deploy. Past this the deploy fails and the release already serving stays up.</td>
+</tr>
+<tr>
+<td><code dir="auto">build_timeout_seconds</code></td>
+<td>Let a build command run for</td>
+<td>How long any one build step may take — installing dependencies, compiling, bundling. Past this the deploy fails and the release already serving stays up.</td>
+</tr>
+<tr>
+<td><code dir="auto">idle_sleep_minutes</code></td>
+<td>Sleep idle apps after</td>
+<td>Minutes without a request before a shared-mode app’s process is stopped to reclaim its memory. Set 0 to turn this off.</td>
+</tr>
+<tr>
+<td><code dir="auto">max_scheduled_tasks_per_app</code></td>
+<td>Most scheduled tasks an app may have</td>
+<td>Counted per schedule rather than per endpoint.</td>
+</tr>
+<tr>
+<td><code dir="auto">scheduled_task_timeout_seconds</code></td>
+<td>Wait for the app to answer for</td>
+<td>Past this the run is recorded as a failure.</td>
+</tr>
+<tr>
+<td><code dir="auto">scheduled_run_result_bytes</code></td>
+<td>Keep of each response</td>
+<td>What the app answers becomes the run’s result. Set 0 to store none.</td>
+</tr>
+<tr>
+<td><code dir="auto">gallery_deploy_mode</code></td>
+<td>Gallery</td>
+<td>What the gallery offers: nothing, extensions only, or extensions and examples.</td>
+</tr>
+<tr>
+<td><code dir="auto">job_log_retention_days</code></td>
+<td>Keep job logs for</td>
+<td>A background job’s log lines.</td>
+</tr>
+<tr>
+<td><code dir="auto">job_run_retention_days</code></td>
+<td>Keep job runs for</td>
+<td>The run rows themselves, and the output files attached to them.</td>
+</tr>
+<tr>
+<td><code dir="auto">scheduled_run_retention_days</code></td>
+<td>Keep run history for</td>
+<td>By age rather than by count, so it means the same thing for an hourly task and a nightly one.</td>
+</tr>
+<tr>
+<td><code dir="auto">scheduled_log_retention_days</code></td>
+<td>Keep task logs for</td>
+<td>The lines an app pushes while a task runs.</td>
+</tr>
+<tr>
+<td><code dir="auto">app_event_retention_days</code></td>
+<td>Keep failure events for</td>
+<td>Everything that broke without anyone doing it — a build that failed, a health check that stopped answering, a scheduled run that could not be made.</td>
+</tr>
+<tr>
+<td><code dir="auto">platform_log_retention_days</code></td>
+<td>Keep the platform’s own log for</td>
+<td>What Launchpad said about each app — the release it fetched, the interpreter it resolved, the dependencies it repaired, the reason a start was refused, the moment it stopped retrying.</td>
+</tr>
+<tr>
+<td><code dir="auto">announcement_recipient_retention_days</code></td>
+<td>Keep announcement recipients for</td>
+<td>The list of who each announcement was mailed to, person by person, with what happened to each of them.</td>
+</tr>
+<tr>
+<td><code dir="auto">max_versions_per_app</code></td>
+<td>Most versions an app may keep</td>
+<td>Every deploy leaves a release behind. This caps what any one app keeps, however many its owner asked for. Set 0 for no limit.</td>
+</tr>
+<tr>
+<td><code dir="auto">environment_tag</code></td>
+<td>Environment name</td>
+<td>What this install is in a multi-environment setup — for example stage or prod. Leave blank to turn environment defaults off.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="admin--authentication">Admin → Authentication</h2><a class="sl-anchor-link" href="#admin--authentication"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Admin → Authentication”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Name</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">dormant_lock_enabled</code></td>
+<td>Lock unused accounts</td>
+<td>Locks an account nobody has used for the period below. Administrators are never locked automatically.</td>
+</tr>
+<tr>
+<td><code dir="auto">dormant_lock_days</code></td>
+<td>Lock after</td>
+<td>How long an account may go unused before it is locked.</td>
+</tr>
+<tr>
+<td><code dir="auto">session_absolute_hours</code></td>
+<td>Sign in again after</td>
+<td>How long a session lasts, however much it is used. Measured from signing in.</td>
+</tr>
+<tr>
+<td><code dir="auto">session_idle_minutes</code></td>
+<td>End an unused session after</td>
+<td>How long a session may sit with nobody using it. Set 0 to turn this off.</td>
+</tr>
+<tr>
+<td><code dir="auto">public_apps_enabled</code></td>
+<td>Apps open to anyone</td>
+<td>Whether an app here may be opened by somebody who is not signed in.</td>
+</tr>
+<tr>
+<td><code dir="auto">apps_listable_to_authenticated</code></td>
+<td>Everyone signed in can see every app</td>
+<td>Whether every app appears in everyone’s list, by name and owner, without being openable. On unless you turn it off.</td>
+</tr>
+<tr>
+<td><code dir="auto">sign_in_providers</code></td>
+<td>Sign-in providers</td>
+<td>Your organization’s identity provider, its provisioning policy, and which social logins are offered.</td>
+</tr>
+<tr>
+<td><code dir="auto">local_admin_enabled</code></td>
+<td>Built-in administrator</td>
+<td>The local username and password that exists so a new install can be configured before single sign-on does — and recovered when it breaks.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="admin--messages">Admin → Messages</h2><a class="sl-anchor-link" href="#admin--messages"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Admin → Messages”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Name</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">announcement</code></td>
+<td>Announcement banner</td>
+<td>A line across the top of every page, in an administrator’s voice.</td>
+</tr>
+<tr>
+<td><code dir="auto">announcement_emails</code></td>
+<td>Announcements</td>
+<td>Email to the people on this install, from you — the message that reaches somebody who is not looking at the app.</td>
+</tr>
+<tr>
+<td><code dir="auto">knowledge_base</code></td>
+<td>Knowledge base</td>
+<td>One app this install points everybody at, from a link in the header on every page.</td>
+</tr>
+<tr>
+<td><code dir="auto">locked_account_message</code></td>
+<td>Locked account message</td>
+<td>What somebody is told when their account is locked.</td>
+</tr>
+<tr>
+<td><code dir="auto">no_account_message</code></td>
+<td>No account message</td>
+<td>What somebody is told when they authenticated but no provider will create an account.</td>
+</tr>
+<tr>
+<td><code dir="auto">pending_activation_message</code></td>
+<td>Awaiting-activation message</td>
+<td>What somebody is told when their account exists and nobody has activated it yet.</td>
+</tr>
+<tr>
+<td><code dir="auto">account_activated_message</code></td>
+<td>Account-activated message</td>
+<td>What somebody is emailed when you activate their account.</td>
+</tr>
+<tr>
+<td><code dir="auto">app_locked_message</code></td>
+<td>Locked app message</td>
+<td>What a visitor is told when they open an app an administrator has locked.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="admin--dependencies">Admin → Dependencies</h2><a class="sl-anchor-link" href="#admin--dependencies"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Admin → Dependencies”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Name</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">dependency_policy</code></td>
+<td>Dependency policy</td>
+<td>Whether this install reads the third-party packages an app installs and compares them to published advisories.</td>
+</tr>
+<tr>
+<td><code dir="auto">dependency_block_malware</code></td>
+<td>Refuse malicious packages</td>
+<td>A separate switch rather than a severity, because there is no such thing as a low-severity credential stealer.</td>
+</tr>
+<tr>
+<td><code dir="auto">dependency_block_severity</code></td>
+<td>Refuse vulnerabilities at or above</td>
+<td>The threshold a vulnerability has to meet before a deploy is refused.</td>
+</tr>
+<tr>
+<td><code dir="auto">dependency_block_only_fixable</code></td>
+<td>Only refuse when a fix has been published</td>
+<td>Refuses the findings somebody can act on, and records the rest.</td>
+</tr>
+<tr>
+<td><code dir="auto">dependency_scan_on_deploy</code></td>
+<td>Resolve dependencies at deploy</td>
+<td>Reads the package names and versions a build installs, as it installs them.</td>
+</tr>
+<tr>
+<td><code dir="auto">dependency_watch_enabled</code></td>
+<td>Re-check serving apps in the background</td>
+<td>An advisory published today is about a release deployed last month.</td>
+</tr>
+<tr>
+<td><code dir="auto">dependency_feed_endpoint</code></td>
+<td>Feed address</td>
+<td>Where advisory data is fetched from. Point it at an internal mirror if egress is closed.</td>
+</tr>
+<tr>
+<td><code dir="auto">dependency_feed_interval_hours</code></td>
+<td>Refresh every</td>
+<td>How often the advisory data is refreshed.</td>
+</tr>
+<tr>
+<td><code dir="auto">dependency_feed_max_age_hours</code></td>
+<td>Call it stale after</td>
+<td>Past this the data is called out as old. A stale feed never blocks a deploy.</td>
+</tr>
+<tr>
+<td><code dir="auto">dependency_feed_credential</code></td>
+<td>Mirror credential</td>
+<td>For a feed that needs one. Write-only — it never comes back to a browser.</td>
+</tr>
+<tr>
+<td><code dir="auto">dependency_waiver_max_days</code></td>
+<td>Waivers may run for</td>
+<td>There is no permanent waiver; this is the ceiling on a temporary one.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="admin--sources">Admin → Sources</h2><a class="sl-anchor-link" href="#admin--sources"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Admin → Sources”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Name</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">source_policy</code></td>
+<td>Source policy</td>
+<td>Which repositories this install will deploy from at all, and whether an uploaded archive may become an app.</td>
+</tr>
+<tr>
+<td><code dir="auto">source_uploads_enabled</code></td>
+<td>Archive uploads</td>
+<td>Whether a folder uploaded from a browser may become an app at all.</td>
+</tr>
+<tr>
+<td><code dir="auto">git_connections</code></td>
+<td>Connected git hosts</td>
+<td>Connect the organization’s git host once, so an app points at a repository instead of carrying a credential of its own.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="admin--email">Admin → Email</h2><a class="sl-anchor-link" href="#admin--email"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Admin → Email”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Name</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">email_enabled</code></td>
+<td>Send email</td>
+<td>When off, no notification is sent and nothing fails.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_transport</code></td>
+<td>Transport</td>
+<td>SMTP, or an HTTPS sending API for the install where outbound 587 is closed and 443 is not.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_api_provider</code></td>
+<td>Sending API provider</td>
+<td>Which sending API, when the transport is one.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_host</code></td>
+<td>SMTP host</td>
+<td>The mail server this install hands messages to.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_port</code></td>
+<td>SMTP port</td>
+<td>587 for STARTTLS, 465 for implicit TLS.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_security</code></td>
+<td>Transport security</td>
+<td>STARTTLS, implicit TLS, or none.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_username</code></td>
+<td>SMTP username</td>
+<td>The account this install authenticates as. Blank for a relay that needs no credential.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_password</code></td>
+<td>SMTP password</td>
+<td>Write-only. Leaving it blank keeps the stored password.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_api_key</code></td>
+<td>Sending API key</td>
+<td>A field of its own rather than a second use of the password: a transport switch must never offer an SMTP password as a bearer token.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_skip_verify</code></td>
+<td>Accept a self-signed certificate</td>
+<td>For an internal relay with a certificate this install cannot verify. A workaround, not a fix.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_from_address</code></td>
+<td>From address</td>
+<td>Who mail from this install appears to be from.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_from_name</code></td>
+<td>From name</td>
+<td>The display name beside the address.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_reply_to</code></td>
+<td>Reply-to</td>
+<td>Where a reply goes, when that should not be the from address.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_notify_admin</code></td>
+<td>Administrator notifications</td>
+<td>Mail to system administrators about this install.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_admin_group_address</code></td>
+<td>Administrator notification address</td>
+<td>A distribution list to send administrator notifications to instead of to each administrator’s own address.</td>
+</tr>
+<tr>
+<td><code dir="auto">email_notify_app</code></td>
+<td>App and access notifications</td>
+<td>Mail to the people who use Launchpad about their own apps and access.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="admin--telemetry">Admin → Telemetry</h2><a class="sl-anchor-link" href="#admin--telemetry"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Admin → Telemetry”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Name</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">telemetry_enabled</code></td>
+<td>Export telemetry</td>
+<td>When off, nothing is exported and nothing fails.</td>
+</tr>
+<tr>
+<td><code dir="auto">telemetry_endpoint</code></td>
+<td>Collector endpoint</td>
+<td>The collector’s base URL. The exporters append /v1/traces and /v1/metrics.</td>
+</tr>
+<tr>
+<td><code dir="auto">telemetry_headers</code></td>
+<td>Credential</td>
+<td>Write-only headers for a collector that needs authentication.</td>
+</tr>
+<tr>
+<td><code dir="auto">telemetry_traces</code></td>
+<td>Traces</td>
+<td>Whether spans are exported.</td>
+</tr>
+<tr>
+<td><code dir="auto">telemetry_metrics</code></td>
+<td>Metrics</td>
+<td>Whether metric batches are exported.</td>
+</tr>
+<tr>
+<td><code dir="auto">telemetry_sample_ratio</code></td>
+<td>Trace sampling</td>
+<td>Head sampling, 0–1. Cardinality is budgeted, and the budget is code.</td>
+</tr>
+<tr>
+<td><code dir="auto">telemetry_temporality</code></td>
+<td>Metric temporality</td>
+<td>Cumulative or delta, whichever your collector expects.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="admin--integrations">Admin → Integrations</h2><a class="sl-anchor-link" href="#admin--integrations"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Admin → Integrations”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Name</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">integration_connections</code></td>
+<td>Connections</td>
+<td>One credential, tied to one place. Two of the same kind are fine; each is attached to apps separately.</td>
+</tr>
+<tr>
+<td><code dir="auto">integration_catalog</code></td>
+<td>What you can connect</td>
+<td>Everything this version of Launchpad can send through.</td>
+</tr>
+<tr>
+<td><code dir="auto">integrations_retain_bodies</code></td>
+<td>Keep message bodies</td>
+<td>Off by default. The log always records a checksum either way.</td>
+</tr>
+<tr>
+<td><code dir="auto">integrations_retention_days</code></td>
+<td>Keep the integration log for</td>
+<td>At least 30 days.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="admin--api-keys">Admin → API keys</h2><a class="sl-anchor-link" href="#admin--api-keys"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Admin → API keys”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Name</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">api_keys_enabled</code></td>
+<td>Personal API keys</td>
+<td>Whether people may hold long-lived credentials that let a script act as them, for automation outside Launchpad.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="admin--features">Admin → Features</h2><a class="sl-anchor-link" href="#admin--features"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Admin → Features”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Name</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">feature_switches</code></td>
+<td>Optional features</td>
+<td>What this build offers, what the license covers, and what an administrator has switched on. The names are data, not code.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="admin--license">Admin → License</h2><a class="sl-anchor-link" href="#admin--license"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Admin → License”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Name</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">license_key</code></td>
+<td>License key</td>
+<td>The key this install was issued. It names a license on the vendor’s side; the term, the customer and the entitlements come back in the answer rather than living in the key.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="notes-on-a-few-of-them">Notes on a few of them</h2><a class="sl-anchor-link" href="#notes-on-a-few-of-them"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Notes on a few of them”</span></a></div>
+<p><strong>The dials</strong> — <code dir="auto">app_memory_limit_mb</code>/<code dir="auto">_gb</code>, <code dir="auto">app_cpu_request_*</code>,
+<code dir="auto">app_cpu_limit_*</code>, <code dir="auto">max_concurrent_builds</code>, <code dir="auto">auto_deploy_poll_seconds</code>,
+<code dir="auto">r_package_repository</code>, <code dir="auto">log_level</code> — have an environment variable underneath
+them. <strong>Zero or empty means the environment’s number, never “off”</strong>, and only one
+of a quantity’s two unit spellings may be set.</p>
+<p><strong><code dir="auto">public_apps_enabled</code></strong> and <strong><code dir="auto">apps_listable_to_authenticated</code></strong> both default
+<strong>on</strong> and both <em>take a capability away</em> when you turn them off. Their default is
+read from an <strong>absent row</strong>, which is why the query asks whether the value is
+<code dir="auto">false</code> rather than whether it is <code dir="auto">true</code>.</p>
+<p><strong>Write-only fields</strong> — <code dir="auto">email_password</code>, <code dir="auto">email_api_key</code>, <code dir="auto">telemetry_headers</code>,
+<code dir="auto">dependency_feed_credential</code> — are credentials, not setting values. They never
+come back to a browser, and leaving one blank keeps what is stored.</p>
+<p><strong><code dir="auto">log_format</code> is not here.</strong> It is reported read-only on the settings document,
+beside <code dir="auto">effective_log_level</code>: it is a fact about who is reading the stream, and
+changing it mid-flight hands a collector a format change it did not ask for.</p>
+<p><strong><code dir="auto">security_txt_expires</code> is required whenever <code dir="auto">security_txt_contact</code> is set</strong>, and
+is never invented or rewritten.</p>
+<p><strong><code dir="auto">integrations_retention_days</code> is floored at 30.</strong></p>
+<p><strong><code dir="auto">environment_tag</code></strong> left blank turns <code dir="auto">.env.&lt;tag&gt;</code> environment defaults off
+entirely.</p>
+</div><footer class="sl-flex astro-xhxjzfa7"><div class="meta sl-flex astro-xhxjzfa7"></div><div class="pagination-links print:hidden astro-jgq3vlii" dir="ltr"><a href="/apps/_admin-guide/operate/troubleshooting/" rel="prev" class="astro-jgq3vlii"><svg aria-hidden="true" class="astro-jgq3vlii astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-jgq3vlii">Previous<br class="astro-jgq3vlii"><span class="link-title astro-jgq3vlii">Troubleshooting</span></span></a><a href="/apps/_admin-guide/reference/environment/" rel="next" class="astro-jgq3vlii"><svg aria-hidden="true" class="astro-jgq3vlii astro-n5k4ipy7" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-jgq3vlii">Next<br class="astro-jgq3vlii"><span class="link-title astro-jgq3vlii">Environment reference</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>

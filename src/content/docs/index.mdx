@@ -6,7 +6,7 @@ hero:
   tagline: What to configure, in what order, and what each switch actually takes away.
   actions:
     - text: Ways to install
-      link: install/ways/
+      link: start/install-options/
       icon: right-arrow
     - text: What is optional
       link: capabilities/optional/
@@ -16,9 +16,9 @@ hero:
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <CardGrid stagger>
-  <Card title="Install" icon="seti:docker">
+  <Card title="Install it" icon="seti:docker">
     One box with Docker Compose, or a cluster with the Helm chart — and what
-    happens on first run. [Ways to install](install/ways/)
+    happens on first run. [Ways to install](start/install-options/)
   </Card>
   <Card title="Let people in" icon="approve-check">
     Providers are database rows, not configuration files, and there is always
@@ -34,10 +34,18 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
     are the ones worth reading before you flip.
     [Anonymous access](security/anonymous/)
   </Card>
+  <Card title="See what is wrong" icon="seti:pipeline">
+    Close to forty checks, each with the reading that produced it and where the
+    fix is. [System checks](operate/checks/)
+  </Card>
+  <Card title="Look something up" icon="open-book">
+    Every runtime setting and every environment variable, in one table each.
+    [Settings reference](reference/settings/)
+  </Card>
 </CardGrid>
 
 :::note
 This guide is for people who run a Launchpad install. If you are deploying an
-app onto one, you want the **user guide** — a separate app, installable from
-the Gallery.
+app onto one, you want the **user guide** — a separate app, installable from the
+gallery.
 :::

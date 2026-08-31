@@ -3,33 +3,52 @@ title: Groups
 description: Local sets of humans, and the three rules about them.
 ---
 
-A group is a set of people on this install. Apps can be owned by one, which is
-how a team shares an app without one person being a single point of failure.
+A group is a set of people **on this install**. Apps can be owned by one, which
+is how a team shares an app without one person being a single point of failure.
 
 ## Three rules
 
-**A group is local.** Not a directory group, not a claim from a token, even if
-the names match. Authorization on this install is decided here.
+**A group is a local row.** You create it here, and it exists here. A directory
+group with the same name is a different object — though its *membership* can feed
+this one, see [Directory groups](../directory-groups/).
 
-**A group is a set of humans, never an actor.** Nothing runs as a group. A
-group holds no API keys and cannot own a credential. When you need something to
-act, that is a [key](../../security/audit/), and keys belong to people, apps, or
-nobody.
+**A group is a set of humans, never an actor.** Nothing runs as a group. A group
+holds no API keys and owns no credential. When something has to act, that is a
+[key](../../security/keys/), and keys belong to people, apps, or nobody.
 
-**An app is owned by a user or a group — never both, never neither.** There is
-no unowned app and no co-ownership. Transferring to a group transfers it
-entirely.
+**An app is owned by a user or a group — never both, never neither.** There is no
+unowned app and no co-ownership. Transferring to a group transfers it entirely.
 
-## Why not directory groups
+## What a group can hold
 
-Because they change without you. A directory group that gains a member at 2am
-would silently gain access to every app that group owns, with nothing in your
-audit log that says a permission changed.
+Grants on apps, at any of the three rungs, and storage access. Everything a
+person can be granted.
 
-Local membership means every change is an action somebody took here, and it is
-recorded.
+## What a mapped group cannot do
+
+A group with **any** claim mapping may hold grants and may **never own an app**.
+Attaching it as an owner is refused, naming it, on all four ownership paths —
+create, transfer, and both of the other create paths.
+
+The reason: ownership is a responsibility somebody accepted, and a directory can
+change who is in a group at 2am with nothing on this install recording that a
+permission moved.
+
+If a team wants to own apps as a team, give them a locally-managed group.
 
 ## Practical advice
 
-Own production apps with groups, not people. The cost of the extra step is one
-click; the cost of not doing it is discovered when somebody leaves.
+**Own production apps with groups, not people.** The cost of the extra step is
+one click; the cost of not doing it is discovered when somebody leaves.
+
+**Grant to groups, not to people, wherever the group already exists.** An access
+review that reads "the payments team" is a review somebody can actually do.
+
+**Keep them small enough to name.** A group called "everyone" is a visibility
+setting wearing a costume — use [authenticated
+visibility](../../security/anonymous/) for that.
+
+## Pickers
+
+There is a directory of users and groups behind every picker in the product, so
+sharing does not require anybody to know an email address exactly.

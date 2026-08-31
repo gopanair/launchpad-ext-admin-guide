@@ -3,19 +3,19 @@ title: Execution modes
 description: Shared and isolated, what each gives you, and the risk one of them does not cover.
 ---
 
-An app runs in one of two modes. The words are `shared` and `isolated` — never
-a backend name, because which technology implements a mode is an implementation
-detail and the mode is the contract.
+An app runs in one of two modes. The words are `shared` and `isolated` — **never
+a backend name**, because which technology implements a mode is an
+implementation detail and the mode is the contract.
 
 ## Shared
 
 Apps run as processes on the Launchpad machine, managed by PM2, **bound to
-`127.0.0.1`**. Reached only through the platform's proxy.
+`127.0.0.1`** and reached only through the platform's proxy.
 
-- Cheap. No cluster, no images.
+- Cheap. No cluster, no images, no registry.
 - Fast to start, so sleeping and waking is quick.
-- Per-app secrecy on disk is enforced by a directory the app does not own —
-  not by a mode bit on one it does.
+- Per-app secrecy on disk is enforced by **a directory the app does not own** —
+  never by a mode bit on one it does.
 
 ## Isolated
 
@@ -25,16 +25,47 @@ One workload per app, each in its own container with its own network policy.
 - Per-app resource limits that are actually enforced.
 - A workload's identity is **issued by the cluster and verified**, never minted
   into a pod spec — which is what lets the kubelet restart a container in place.
-- A crashing workload is restarted a bounded number of times and then told that
-  it has stopped being restarted, rather than looping forever.
+- A crashing workload is restarted a **bounded** number of times and then told
+  that it has stopped being restarted, rather than looping forever.
+
+Isolated mode is what [jobs](../../operate/automation/) need: a job runs in its
+own container with its own memory limit, never in the app's process.
+
+## Per-app OS accounts, in shared mode
+
+**This is the production posture.** Without it, every app runs as the Launchpad
+user and can read the platform database and every other app's secrets.
+
+`APP_USER_PER_APP` with `APP_USER_AUTOCREATE` gives each app a nologin system
+account. It requires Launchpad to run as root, because PM2 setuids to the app
+account.
+
+Two structural points:
+
+- The **primary group** (`APP_USER_GROUP`) is what the egress rules act on. The
+  per-app group reaches the workload only through the launcher.
+- The posture is **derived from the platform's own uid** rather than declared. An
+  install running as an ordinary user reports `platform` and says so at startup;
+  it does not pretend to isolate.
 
 ## The effective mode belongs to the deployment
 
-An install can offer both. Each app's mode is decided when it is created, by one
+An install can offer both. Each app's mode is decided **at creation**, by one
 helper on all three creation paths, and the *effective* mode is a property of the
 deployment rather than of the install.
 
+So a release records the mode it ran under, and changing an app's mode takes
+effect on its next deploy rather than retroactively.
+
 A refused create writes nothing — there is no half-created app to clean up.
+
+## Switching isolated execution off
+
+`isolated_execution_enabled` off means creation refuses it. Existing isolated
+apps are not migrated by the switch.
+
+`default_execution_mode` decides what a new app is born in when whoever creates
+it does not say.
 
 ## The risk you should know about
 
@@ -48,10 +79,13 @@ each other. If you need that, you need isolated mode.
 
 ## Restarts
 
-Configuration reaches a workload **at start**. One verb starts a workload and
-the platform supplies the whole description, so a start always carries the
-configuration as it is now — there is no drift between what an app was given
-and what it is configured with.
+Configuration reaches a workload **at start**. One verb starts a workload and the
+platform supplies the whole description, so a start always carries the
+configuration as it is now — there is no drift between what an app was given and
+what it is configured with.
 
-A start that produced no process is not a start, and is reported as a failure
+**A start that produced no process is not a start**, and is reported as a failure
 rather than as a success with nothing behind it.
+
+A backend's status word reads the **process** before it believes its manager: the
+container before the pod's phase, the pid before PM2's word.
