@@ -16,6 +16,22 @@ Three classes, never blurred, separated by **who they belong to**.
 They act as their holder: anything that person can do, across every app they can
 reach. Treat one like a password.
 
+**Two scopes, chosen when the key is created and never edited**: `full`, which
+is what a key is unless somebody chose otherwise, and `read`, which is refused
+every write. The Scope column on Admin → API keys is how you answer "which of
+these could delete an app".
+
+Read is narrower, and it is **not** safe to leak: a read-scoped key cannot
+change anything in Launchpad, but it can still read anything its owner can read
+— source archives, logs, stored objects, the user directory, and for an
+administrator's key the audit log — and it can still call that person's apps. A
+scope bounds Launchpad's own routes; it says nothing about what a deployed app
+does with a request, because Launchpad has no view into an app's routes.
+
+You cannot widen or narrow somebody's key, and there is no install-wide setting
+forcing narrow ones. The tool you have is the one you already had: disable it,
+and say why.
+
 `api_keys_enabled` switches them off install-wide. **Off means absent, and off
 means now** — existing keys stop working immediately, with no cache to wait out.
 
@@ -38,8 +54,9 @@ whoever is running a security scan against one app.
 For pipelines. **A deploy key belongs to no person**, so it does not stop working
 when somebody leaves — which is the actual problem it solves.
 
-Two scopes, and **the deploy scope's route list is a strict subset of the personal
-one**. Not a different set: a subset, verified by walking the router.
+Two scopes, and **the deploy scope's route list is a strict subset of a
+full-scope personal key's**. Not a different set: a subset, verified by walking
+the router.
 
 Encourage them. A personal key in CI is a person's identity in a place nobody is
 watching.
