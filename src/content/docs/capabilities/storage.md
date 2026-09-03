@@ -13,7 +13,7 @@ them distinct is most of understanding it.
 | **Resource** | A named store on this install | The install's |
 | **Backing** | Where the bytes actually live | The resource's |
 | **Grant** | Access to a folder, for a person | A person's |
-| **Mapping** | An attachment of a resource to an app, at a level | An app's |
+| **Mapping** | An attachment of a resource to an app, at a level, at a folder | An app's |
 
 **A grant is a person's and a mapping is an app's. Neither implies the other.**
 Granting yourself a folder does not let any app read it, and attaching a resource
@@ -55,6 +55,20 @@ is **union-of-max per key**: two grants combine to the wider level.
 **There is no admin bypass.** A folder nobody granted you is not a row you can see,
 and being an administrator does not change that. If you need to look inside, grant
 yourself access — and the grant is audited.
+
+A caller with no grant on the root is not told the store is empty: they get the
+folders they were granted, listed as prefixes.
+
+## A mapping's identity includes its folder
+
+**One app can mount two folders of the same resource**, at two paths and two
+levels — `(resource, app, folder)` is what makes a mapping unique, not
+`(resource, app)`.
+
+The app then has two mounts sharing one name, which is why the SDKs let an app
+say *which* — `lp.storage(name, folder=…)` and its peers in the other
+languages. An app asking for a name that matches two mounts without saying which
+folder is refused, naming both.
 
 ## Who may attach
 

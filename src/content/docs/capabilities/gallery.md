@@ -27,6 +27,25 @@ this is not a security control. [Source policy](../../security/sources/) is.
 **Installed is derived, never stored.** Whether an item is installed is worked out
 from your app rows. There is no second record to go stale.
 
+## The state an item is born in
+
+An entry may *ask* what visibility the installed app starts at, and the card
+shows the answer before you deploy. Three values, and never `public`:
+
+| | The app starts | For |
+|---|---|---|
+| **listable** | private, and listed | The default, and what every entry that says nothing gets |
+| **viewable** | signed-in people may open it, and listed | An item whose whole purpose is to be used by the people on the install |
+| **hidden** | private, and unlisted | An item that reads the estate, where its existence is itself a hint about the install |
+
+The ceiling is **signed-in**. Anonymous reach is your install's decision, gated
+on a transition and withdrawable install-wide, and a line in a document fetched
+over the network must not be able to reach across all of that.
+
+It is the catalog **asking**, not deciding: it moves two columns you can change a
+minute later on the app's Sharing tab, and it grants nothing that was not already
+yours to grant.
+
 ## Who can deploy what
 
 - **Extensions are administrator-only.**

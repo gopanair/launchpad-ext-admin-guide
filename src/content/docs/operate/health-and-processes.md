@@ -45,6 +45,33 @@ restarted** — a stated verdict rather than a silent give-up.
 restarted forever.** A restart that will fail the same way in ninety seconds is
 not a recovery, and the memory tolerance counts restarts rather than sweeps.
 
+**A restart loop is found in either mode.** Five restarts inside fifteen minutes
+raises a flapping event, whether they arrive all at once — which is what a
+crashed process under the shared backend does, since it is restarted
+immediately — or one per sweep, which is the shape the kubelet's own backoff
+produces. Counting per sweep alone made it a threshold an isolated app could not
+reach however broken it was.
+
+Fifteen minutes is taken from that backoff: 10s, 20s, 40s, 80s, 160s, 300s is
+five restarts inside about ten. It is long enough that an app restarting once
+every ten minutes — annoying, not looping — never trips it. And the restart
+count on the page says **what it is scoped to**, so the number you read and the
+verdict you are given are about the same window.
+
+## A workload that never starts
+
+A start is allowed five minutes — the isolated backend's own readiness budget.
+After that the platform stops calling it *starting* and calls it **crashed**,
+carrying the backend's own reason.
+
+That matters most for the failure that used to hang forever: a pod nothing will
+schedule. There is no process to crash, no log to read and no timeout of its
+own, so waiting would mean waiting indefinitely. Instead the scheduler's
+sentence — no node with that much memory, no node matching that selector — is
+what the app's page says.
+
+A pull the kubelet is still retrying is **not** counted as a failed deploy.
+
 ## The platform's own voice
 
 The platform keeps its own account of each app — the release it fetched, the

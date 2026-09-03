@@ -48,12 +48,12 @@ app can send. That belongs inside an app.
 Where `PRESENCE_ENDPOINT` is configured, you can see who is *currently* in an app.
 A live fact, not history, and absent on installs that have not set it up.
 
-## The licence counts
+## The license counts
 
 Separately, and only where licensing is on, the install sends counts to the
 vendor at check-in. **Nothing in that payload is a name** — no app names, no user
 names, no hostnames — the install renders it before sending, and the counts can be
-switched off with one stated exception a paid licence cannot suppress.
+switched off with one stated exception a paid license cannot suppress.
 
 **The install count refuses nothing and never will**, and neither does the seat
 count beside it. See [Licensing](../licensing/).

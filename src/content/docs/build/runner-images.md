@@ -26,18 +26,31 @@ and `warn` for one pinned to `latest` or to no tag at all.
 ## What an image carries is a set
 
 ```
-RUNNER_PYTHON_VERSION=3.12,3.11
-RUNNER_NODE_VERSION=22,20
-RUNNER_R_VERSION=4.5,4.4
+RUNNER_PYTHON_VERSION=3.14,3.13,3.12
+RUNNER_NODE_VERSION=24,22,20
+RUNNER_R_VERSION=4.5,4.4,4.3
 ```
 
 Comma-separated, **the first entry is the default**, and **every entry is
-required**: an image that declares a series the platform cannot then build
-against is refused at start, naming the missing one.
+required**: at bootstrap the runner checks its own image for *every* series in
+the list, not just the first that matches, and refuses to start a workload the
+declaration lied about.
 
 That is the rule that keeps the declaration honest. An image that says it carries
-Python 3.11 and does not is a deploy that fails at the worst moment, in the
+Python 3.12 and does not is a deploy that fails at the worst moment, in the
 container, where nobody is watching.
+
+Two more properties of the list:
+
+- **A malformed entry voids the whole declaration** rather than shortening it.
+  Half a list is worse than none, because you would not know which half.
+- **Both images carry the same set** — the platform's and the runner's. An R
+  library is restored on the platform host and loaded in the pod, so a series
+  present on one side and not the other fails at `dyn.load`, one shared object
+  at a time.
+
+There is no `RUNNER_GO_VERSION`. Go builds produce a binary, so no Go reaches
+the runner — see [language versions](../languages/).
 
 ## Tag them
 

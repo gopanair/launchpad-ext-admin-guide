@@ -76,6 +76,7 @@ export default defineConfig({
             { label: "Users and roles", slug: "identity/users-and-roles" },
             { label: "Groups", slug: "identity/groups" },
             { label: "Directory groups", slug: "identity/directory-groups" },
+            { label: "Permitted login groups", slug: "identity/permitted-groups" },
             { label: "The directory feed (SCIM)", slug: "identity/directory-feed" },
             { label: "Offboarding and dormancy", slug: "identity/offboarding" },
           ],
@@ -92,6 +93,7 @@ export default defineConfig({
             { label: "Releases and retention", slug: "apps/releases" },
             { label: "The artifact store", slug: "apps/artifact-store" },
             { label: "The estate views", slug: "apps/estate-views" },
+            { label: "What an app can reach", slug: "apps/reach" },
           ],
         },
         {
@@ -117,6 +119,7 @@ export default defineConfig({
             { label: "Machine credentials", slug: "security/keys" },
             { label: "The audit log", slug: "security/audit" },
             { label: "Scan targets", slug: "security/scan-targets" },
+            { label: "What an assessor is told", slug: "security/compliance" },
           ],
         },
         {

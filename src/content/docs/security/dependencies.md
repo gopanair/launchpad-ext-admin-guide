@@ -48,6 +48,9 @@ shape entirely.
 | `dependency_block_malware` | Its own switch. |
 | `dependency_watch_enabled` | Re-check serving apps in the background. |
 | `dependency_waiver_max_days` | The ceiling on a temporary waiver. |
+| `dependency_scan_interval_hours` | How often the background sweep runs — its own dial, not the feed's. |
+| `dependency_scan_history_kept` | How many readings to keep **per app**. A count, not a number of days. |
+| `dependency_lock_on` | The one automatic consequence. `off` by default — see below. |
 
 **Preview a policy change before you save it.** The preview tells you which apps
 would be refused, which is the number that decides whether you turn it on today
@@ -59,7 +62,9 @@ or after a conversation.
 **release**, not today's feed. An app serving for a month does not fail to come
 back because an advisory landed overnight.
 
-**A serving app is never stopped.** Policy gates deploys. It does not reach in.
+**A serving app is never stopped by the policy itself.** Policy gates deploys.
+The one thing that does reach in is `dependency_lock_on`, which is off until you
+set it, and is described below.
 
 **A stale feed never blocks.** If the data cannot be refreshed, deploys continue.
 A scanner that cannot reach its feed must not become an outage — the checks page
@@ -69,6 +74,59 @@ warns instead.
 
 Waivers expire. A permanent one is a decision nobody revisits, which after a year
 is indistinguishable from having no policy.
+
+A waiver is also the **only** way to mean "leave this app alone" — see the lock,
+below.
+
+## Every pass leaves a reading
+
+The background sweep writes **one row per app per pass, whether or not anything
+changed**, and a deploy leaves one too. A finding is derived against a corpus
+that gets swapped wholesale, so "nothing changed" is not a thing this can know
+without writing the reading down.
+
+Each reading carries the counts, the coverage, the corpus age and the notable
+advisory ids — never a copy of the findings themselves. Three triggers, and they
+mean different things:
+
+| | |
+|---|---|
+| `deploy` | Written by the builder, beside the verdict |
+| `scheduled` | The sweep, on `dependency_scan_interval_hours` |
+| `manual` | A re-check somebody asked for. **Records, and never locks** |
+
+**The history is yours; the owner gets the latest reading.** An app's own tab
+shows its most recent scan; the list of every reading is an admin-only read.
+
+Retention is `dependency_scan_history_kept` — a count per app, pruned oldest-first
+on the next write.
+
+## The one automatic lock
+
+`dependency_lock_on` is `off`, `malware`, `critical` or `high`, and it ships
+`off`. Set it, and on a **scheduled** pass an app whose *serving* release carries
+an **unwaived** finding at or above that level is [locked](../../apps/locking/)
+and stopped. The proxy then refuses it.
+
+This is the only place in the product where a policy takes a running app off the
+air, so it is worth being precise about:
+
+- **Scheduled passes only.** A manual re-check records and never locks.
+- **The serving release**, not the newest build.
+- **Unwaived findings only.** A waived finding never locks.
+- **It never overwrites an administrator's lock.** The lock is attributed —
+  `admin` or `dependency` — because an app locked by a person and an app locked
+  by the sweep need different answers.
+- **The owner is emailed** when it happens, where mail is configured.
+- **Unlocking is not a decision that sticks.** An app you unlock whose finding
+  still matches is locked again on the next pass. **A waiver is how to mean it.**
+
+The audit row is written by the system and names the advisory, the package and
+the threshold that caught it.
+
+You cannot set `dependency_lock_on` while `dependency_watch_enabled` is off —
+nothing would ever run the pass. Turning the watch off afterwards is allowed, and
+warned about instead.
 
 ## The feed
 

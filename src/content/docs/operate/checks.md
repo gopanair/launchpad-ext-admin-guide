@@ -51,7 +51,7 @@ link at all.
 
 ## The nine categories
 
-**Platform** · database, host, licence, advisory corpus, public reachability,
+**Platform** · database, host, license, advisory corpus, public reachability,
 clock, telemetry, database pool, schema migrations
 
 **Storage** · the data directories, the artifact store, the build cache
@@ -61,7 +61,7 @@ directory, shared storage roots
 
 **Apps** · app health
 
-**Sign-in** · sign-in, directory groups, directory feed
+**Sign-in** · sign-in, directory groups, permitted login groups, directory feed
 
 **Notifications** · notifications
 

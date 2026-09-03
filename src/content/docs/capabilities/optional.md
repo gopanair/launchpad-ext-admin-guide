@@ -48,7 +48,7 @@ quantity's two unit spellings are peers of which only one may be set.
 
 ## The one exception, and it is the opposite
 
-**Not licensed is visible.** A capability withheld by [licence
+**Not licensed is visible.** A capability withheld by [license
 tier](../../operate/licensing/) is shown, and shown as **locked**.
 
 That is deliberate and it is the inverse of the rule: unconfigured is a decision

@@ -19,6 +19,7 @@ Several of these emit more than one row; the rows keep their own ids.
 | `notifications` | Notifications | Mail and channels. |
 | `sign_in` | Sign-in | Providers, and `lockout_risk` — one administrator with local sign-in off. Absent while local sign-in is on. |
 | `directory_groups` | Sign-in | `skip` with no mappings; `warn` when a provider has mappings and no membership has ever arrived. |
+| `login_group_gate` | Sign-in | `skip` when no provider restricts sign-in by group; **`pass`** naming the gated providers, with what a vanished claim would cost. |
 | `scim` | Sign-in | `skip` with no token; `warn` on a token never used. |
 | `license` | Platform | Tier, term, last verdict. |
 | `git_connections` | Sources | `fail` past expiry **naming the app count**; `warn` inside 14 days or after a failed mint. Disabled connections excluded. |

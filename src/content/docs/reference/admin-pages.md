@@ -49,7 +49,9 @@ page is about**. A new page joins the group whose question it answers.
 | **[Sources](../../security/sources/)** | Which repositories this install will deploy from at all. |
 | **[Dependencies](../../security/dependencies/)** | Which third-party packages this install will run, and what it found. |
 | **[Publisher requests](../../identity/users-and-roles/)** | People asking to be allowed to deploy. |
-| **[Credentials](../../capabilities/credentials/)** | Values an app needs and its owner never holds, and how many apps hold each. |
+| **[Reach](../../apps/reach/)** | What each app holds, and which apps hold each thing. |
+| **[Compliance](../../security/compliance/)** | What this install tells an assessor, and the evidence behind it. |
+| **[Credentials](../../capabilities/credentials/)** | Values an app needs and its owner never holds, and which apps hold each. |
 | **[API keys](../../security/keys/)** | Every personal credential on the install, and how to stop one. |
 | **[Deploy keys](../../security/keys/)** | Credentials a pipeline holds, which belong to nobody and outlive whoever made them. |
 | **[Activity](../../security/audit/)** | What people did, and what broke without anyone doing it. |

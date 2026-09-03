@@ -30,7 +30,7 @@ install is public, not because an app is awake.
 **Recognition may only subtract.** The check can withhold a verdict; it can never
 decide a response on the app's behalf.
 
-**A round happens because the licence has not said not to** — and only an explicit
+**A round happens because the license has not said not to** — and only an explicit
 refusal counts.
 
 ## The latch

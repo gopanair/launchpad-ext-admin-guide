@@ -22,6 +22,23 @@ present carries the age of its reading.
 
 Python, Node, Go and R.
 
+**The published image ships three of each**, so a fresh install offers a choice
+before anybody installs anything:
+
+| | What the platform image carries | Default |
+|---|---|---|
+| Python | 3.14, 3.13, 3.12 | 3.14 |
+| Node | 24, 22, 20 | 24 |
+| Go | the image's own, plus 1.26.7 and 1.25.14 | the image's own |
+| R | the distribution's, plus 4.4 and 4.3 | the distribution's |
+
+Highest first, in every case — the probe takes the first entry as the family's
+default. Quarto is in the same image as of 0.5.0; there is no separate
+`-quarto` tag to choose between any more.
+
+Your own final image is yours to compose, and dropping entries from one
+variable is how you offer fewer.
+
 ## What a developer may ask for
 
 **Comparators only**, and **never a patch version**. A pin naming a patch is
@@ -39,6 +56,27 @@ ten-minute install.
 **One declaration per family**, and Go's is `go.mod`. A Posit Connect
 `manifest.json` is translated into an `renv.lock` rather than taught as a second
 format.
+
+## Go is not like the other three
+
+There is no `[runtime] go` key and there will not be one. A `go` directive in
+`go.mod` is a **minimum**, the `go` command resolves it itself, and the version
+reaches a runner not at all, because `go build` produces a binary.
+
+**Go never downgrades**, which is the part that surprises people: a
+`toolchain go1.25.14` line does not hold a build on 1.25.14 when a newer
+toolchain is present. Go takes the newer of the two, always. So no declaration
+an app can write reaches the older toolchains at all.
+
+**The lever is yours: `GOTOOLCHAIN=go1.X.Y`.** It is on the operator's
+allow-list of build parameters, for an estate that has to be held on a known
+toolchain, or one dependency that will not compile on the newest. Go looks for
+an executable of that name on `PATH` before it considers the module proxy, so it
+works on an install with no egress at all — which is the whole reason the extra
+toolchains are in the image rather than fetched.
+
+It is inert until you set it, and the checks page reports the set the image
+carries.
 
 ## R has more moving parts than the others
 
@@ -66,6 +104,11 @@ Every build records the version it resolved, pinned or not. Two readers:
   newest build, and never answering less than it knows.
 - **The app's own Runtime section**, editor-only, carrying the patch the estate
   view folds away.
+
+**A release names the interpreter it was built against, and both launchers start
+the workload under that one** — shared and isolated alike. An app pinned below
+the install's default reports that version at runtime, not the default, and a
+restart puts back the same one.
 
 Use the first when you are planning; use the second when you are answering a
 question about one app.

@@ -34,7 +34,7 @@ apart two things that happen to look alike.
 **No credential values, ever.** Five credential actions are recorded, and each
 carries names and key names only.
 
-**The licence key is the deliberate exception**, and it is not a credential: it is
+**The license key is the deliberate exception**, and it is not a credential: it is
 plain text, audited in the clear, and readable back in full. It names a customer,
 not an install, and it is a lookup rather than a secret.
 

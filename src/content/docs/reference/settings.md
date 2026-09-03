@@ -6,7 +6,7 @@ description: Every runtime setting, what it does, and where it is rendered.
 Every setting an administrator can change, by the name the API uses for it,
 grouped by the page that renders it.
 
-Ninety-three of them. **A setting missing from this index is a test failure** —
+Ninety-six of them. **A setting missing from this index is a test failure** —
 the same index feeds the settings page, its filter, and the command palette, so a
 setting cannot be findable by one and invisible to another.
 
@@ -45,7 +45,7 @@ faster than this page.
 | `build_timeout_seconds` | Let a build command run for | How long any one build step may take — installing dependencies, compiling, bundling. Past this the deploy fails and the release already serving stays up. |
 | `idle_sleep_minutes` | Sleep idle apps after | Minutes without a request before a shared-mode app’s process is stopped to reclaim its memory. Set 0 to turn this off. |
 | `max_scheduled_tasks_per_app` | Most scheduled tasks an app may have | Counted per schedule rather than per endpoint. |
-| `scheduled_task_timeout_seconds` | Wait for the app to answer for | Past this the run is recorded as a failure. |
+| `scheduled_task_timeout_seconds` | Give up waiting for the app after | Past this the run is recorded as a failure. |
 | `scheduled_run_result_bytes` | Keep of each response | What the app answers becomes the run’s result. Set 0 to store none. |
 | `gallery_deploy_mode` | Gallery | What the gallery offers: nothing, extensions only, or extensions and examples. |
 | `job_log_retention_days` | Keep job logs for | A background job’s log lines. |
@@ -94,6 +94,9 @@ faster than this page.
 | `dependency_block_only_fixable` | Only refuse when a fix has been published | Refuses the findings somebody can act on, and records the rest. |
 | `dependency_scan_on_deploy` | Resolve dependencies at deploy | Reads the package names and versions a build installs, as it installs them. |
 | `dependency_watch_enabled` | Re-check serving apps in the background | An advisory published today is about a release deployed last month. |
+| `dependency_scan_interval_hours` | Re-check every | How often every serving release is re-judged against the advisory data already held here. |
+| `dependency_scan_history_kept` | Keep the last | How many readings each app keeps. A count, not a number of days. |
+| `dependency_lock_on` | Lock a serving app when it installs | The one thing here that takes a running app off the air by itself. Off unless an administrator sets it. |
 | `dependency_feed_endpoint` | Feed address | Where advisory data is fetched from. Point it at an internal mirror if egress is closed. |
 | `dependency_feed_interval_hours` | Refresh every | How often the advisory data is refreshed. |
 | `dependency_feed_max_age_hours` | Call it stale after | Past this the data is called out as old. A stale feed never blocks a deploy. |

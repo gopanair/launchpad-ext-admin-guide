@@ -1,11 +1,11 @@
 ---
 title: Licensing
-description: What a licence gates, what it cannot do, and why it is not a security boundary.
+description: What a license gates, what it cannot do, and why it is not a security boundary.
 ---
 
 ## Bookkeeping and friction, never a security boundary
 
-Say that out loud before designing anything around it. The licence is not access
+Say that out loud before designing anything around it. The license is not access
 control. It does not protect data and it does not stop anyone doing anything that
 matters to security.
 
@@ -18,9 +18,9 @@ There is nothing to rotate and nothing to protect. One normaliser reads it, and
 the `LP<n>` prefix manages the drift between what this build expects and what the
 vendor issues.
 
-## A licence gates configuration, never operation
+## A license gates configuration, never operation
 
-This is the guarantee that matters when a licence lapses.
+This is the guarantee that matters when a license lapses.
 
 **Publishing is gated on the transition**, so an app that is already public
 **keeps serving**. Nothing goes dark because a check came back unfavourably.
@@ -29,7 +29,7 @@ This is the guarantee that matters when a licence lapses.
 hold. The only thing that can fall is the tier itself, on an **explicit adverse
 verdict, after weeks of warning**.
 
-A dead licence server changes nothing.
+A dead license server changes nothing.
 
 ## Off means no outbound request at all
 
@@ -58,7 +58,7 @@ Four tiers — demo, free, trial, paid — **derived and never stored**.
 Dependency policy, identity providers, groups, app storage, telemetry, trusted
 sources, integrations, Slack, public apps.
 
-Admin → Features shows what this build offers, what the licence covers, and what
+Admin → Features shows what this build offers, what the license covers, and what
 you have switched on. **The names are data, not code.**
 
 ## Not licensed is visible
@@ -76,7 +76,7 @@ somebody else made, and you are entitled to see what you do not have.
 renders the payload before sending and asserts the type of every value.
 
 The counts ship on and can be switched off — `license.send_usage` — with one
-exception a paid licence cannot suppress. No screen renders the body, and there is
+exception a paid license cannot suppress. No screen renders the body, and there is
 no switch in front of it beyond that one.
 
 `install.id` has no writer: it is set once and never updated.

@@ -32,12 +32,29 @@ the visitor-facing layer.
 
 ## What it blocks
 
-Seven enforcement points — deploying, starting, changing visibility, running
-jobs, and the rest — and the list is the specification. A refusal is **409** and
-carries your message.
+Eight enforcement points — deploying, starting, changing visibility, running
+jobs, **rolling back**, and the rest — and the list is the specification. A
+refusal is **409** and carries your message.
+
+Rollback is on that list for the same reason a deploy is: it changes what would
+be served the moment the app came back. A lock has to hold the app *and* the
+release it would return to.
 
 There is no way around it: no flag, no API call, no redeploy under another name
 that inherits the locked app's state.
+
+## Who locked it
+
+A lock is attributed, because two different things can set one:
+
+| | |
+|---|---|
+| `admin` | You, or another administrator |
+| `dependency` | The [dependency sweep](../../security/dependencies/), on a finding at or above `dependency_lock_on` |
+
+The sweep never overwrites a lock a person put on, and the CLI's refusal names
+which kind stopped it. An app the sweep locked and you unlock is **locked again
+on the next pass** if the finding still matches — a waiver is how to mean it.
 
 ## Retirement is a lock
 
