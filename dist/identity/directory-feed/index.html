@@ -98,6 +98,10 @@ administrator off to re-check a base URL they pasted correctly.</p>
 <td><strong>Group membership</strong></td>
 <td><code dir="auto">PATCH /Groups/{id}</code> writes the same rows the claim reconciler writes, stamped <code dir="auto">directory</code> with the calling provider.</td>
 </tr>
+<tr>
+<td><strong>Groups themselves</strong></td>
+<td><code dir="auto">GET /Groups</code>, <code dir="auto">GET /Groups/{id}</code> and <code dir="auto">PUT /Groups/{id}</code> answer <code dir="auto">501</code> with a reason, deliberately: a group is created by a claim mapping, never pushed. Okta’s group-push pre-check reads that answer and reports it, rather than a bare error.</td>
+</tr>
 </tbody>
 </table>
 <p>A group is addressed by <strong>the directory’s own name for it</strong> — <code dir="auto">/Groups/{id}</code>

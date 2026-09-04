@@ -6,7 +6,8 @@ description: Every page under Admin, and the question each one answers.
 Admin is four groups, and **each names what you are doing rather than what the
 page is about**. A new page joins the group whose question it answers.
 
-`⌘K` reaches all of them by name.
+`⌘K` reaches all of them by name, and every setting on them by its words in
+any order.
 
 ## Overview — what is happening on this machine right now
 

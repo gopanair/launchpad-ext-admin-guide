@@ -40,10 +40,14 @@ not an install, and it is a lookup rather than a secret.
 
 ## What is always there
 
-Every settings change (`platform_settings.update`), every provider change, every
-grant and transfer, every activation, every lock and unlock, every announcement
-set and cleared, every knowledge-base pick, every storage presign, every build
-cache reclaim.
+Every settings change (`platform_settings.update`), every provider change —
+switching one off is its own row — every app created and deleted, every grant
+and transfer, every activation, every lock and unlock, every announcement set
+and cleared, every knowledge-base pick, every storage presign, every build cache
+reclaim.
+
+A storage presign records the folder whose grant authorized it, so a delete
+allowed by a grant on `reports` reads as `reports`, never as the whole store.
 
 Retention settings do not prune it. If your organization requires deleting it,
 that is a deliberate database operation, not a knob.

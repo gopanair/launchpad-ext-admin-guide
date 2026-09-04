@@ -39,6 +39,11 @@ working. Unlocking is your action, and both directions are audited.
 A locked person is turned away with the **locked account message** you wrote on
 Admin → Messages.
 
+**The last administrator who can sign in is protected.** Locking, demoting or
+deleting the one unlocked administrator is refused — from the pages, from the
+API, and by a [directory feed](../directory-feed/) deactivating them — because
+the alternative is an install nobody can unlock.
+
 ## Deleting
 
 Deleting a user is available and is usually the wrong first step. **Their apps do

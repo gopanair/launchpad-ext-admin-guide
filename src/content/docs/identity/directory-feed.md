@@ -26,6 +26,7 @@ administrator off to re-check a base URL they pasted correctly.
 | **Deactivate** | `active: false` **locks** the account. `active: true` unlocks it and restarts the dormancy clock. |
 | **Find a user** | `userName eq` filter, and read by id. |
 | **Group membership** | `PATCH /Groups/{id}` writes the same rows the claim reconciler writes, stamped `directory` with the calling provider. |
+| **Groups themselves** | `GET /Groups`, `GET /Groups/{id}` and `PUT /Groups/{id}` answer `501` with a reason, deliberately: a group is created by a claim mapping, never pushed. Okta's group-push pre-check reads that answer and reports it, rather than a bare error. |
 
 A group is addressed by **the directory's own name for it** — `/Groups/{id}`
 resolves through the same claim mappings a sign-in resolves through. So you map a

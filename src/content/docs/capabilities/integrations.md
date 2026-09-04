@@ -84,3 +84,7 @@ deletion, and it is worth saying that to whoever asks you to "remove the files".
 You can test a connection, and you can test one app's integration. Do the second
 before telling a developer their integration works: a connection that
 authenticates is not the same as an app that can post to the channel.
+
+A file-kind connection — SharePoint, OneDrive, Google Drive — is tested by
+uploading a one-line `launchpad-test.txt` to its default destination, because
+those refuse a plain text message; the button says so. Expect to find the file.

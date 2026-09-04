@@ -61,6 +61,12 @@ the router.
 Encourage them. A personal key in CI is a person's identity in a place nobody is
 watching.
 
+A deploy key's expiry is bounded the way a personal key's is: the same range of
+days, and a value outside it is refused rather than read as *never*.
+
+What a deploy key does — a deploy, a restart, a stop, a rollback, a promotion —
+is recorded in the audit log as that key, by name.
+
 ## What no key can do
 
 **No key manages credentials or authorization.** A key cannot mint another key,

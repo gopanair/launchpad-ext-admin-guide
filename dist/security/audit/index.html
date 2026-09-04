@@ -90,10 +90,13 @@ carries names and key names only.</p>
 plain text, audited in the clear, and readable back in full. It names a customer,
 not an install, and it is a lookup rather than a secret.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="what-is-always-there">What is always there</h2><a class="sl-anchor-link" href="#what-is-always-there"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “What is always there”</span></a></div>
-<p>Every settings change (<code dir="auto">platform_settings.update</code>), every provider change, every
-grant and transfer, every activation, every lock and unlock, every announcement
-set and cleared, every knowledge-base pick, every storage presign, every build
-cache reclaim.</p>
+<p>Every settings change (<code dir="auto">platform_settings.update</code>), every provider change —
+switching one off is its own row — every app created and deleted, every grant
+and transfer, every activation, every lock and unlock, every announcement set
+and cleared, every knowledge-base pick, every storage presign, every build cache
+reclaim.</p>
+<p>A storage presign records the folder whose grant authorized it, so a delete
+allowed by a grant on <code dir="auto">reports</code> reads as <code dir="auto">reports</code>, never as the whole store.</p>
 <p>Retention settings do not prune it. If your organization requires deleting it,
 that is a deliberate database operation, not a knob.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="404-over-403">404 over 403</h2><a class="sl-anchor-link" href="#404-over-403"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “404 over 403”</span></a></div>

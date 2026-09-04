@@ -79,3 +79,7 @@ and PagerDuty carry platform audiences; the file kinds carry none.
 
 That is separate from [what apps send](../integrations/) — same connections,
 different sender.
+
+Replies to mail an app sends go to the app's **owner**. A group-owned app has no
+address to reply to, so those go to the install's reply-to instead, and the
+app's Integrations tab says which of the two applies to it.

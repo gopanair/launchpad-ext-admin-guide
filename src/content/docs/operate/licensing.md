@@ -29,6 +29,11 @@ This is the guarantee that matters when a license lapses.
 hold. The only thing that can fall is the tier itself, on an **explicit adverse
 verdict, after weeks of warning**.
 
+**Switching a licensed thing off is never gated either.** Handing telemetry back
+to the environment, switching an exporter off, narrowing the source policy to
+none, turning uploads off — all of them pass on an install whose trial has
+ended. A lapse cannot trap a collector in place.
+
 A dead license server changes nothing.
 
 ## Off means no outbound request at all

@@ -76,15 +76,24 @@ into the database when you have an administrator who can.
 
 ## Disabling and deleting
 
-**Disabling is immediate.** The provider disappears from the login page and its
-login route refuses. There is no cache to wait out.
+**Disabling is a switch in the provider's row**, beside the badge that says
+whether it is on the login page, and it is immediate: the provider disappears
+from the login page, its login route refuses, and so does its callback — a
+sign-in already in flight through it does not complete. There is no cache to
+wait out. Switching a provider off is its own row in the audit log, not an
+update like any other.
+
+**A provider's kind is fixed.** Edit its issuer, its client and its label; an
+OIDC provider cannot be turned into a GitHub one, or into a second password
+form.
 
 **Deleting a provider keeps every account it provisioned.** Those people exist;
 they just have no way in through that door.
 
-Before you disable the last one, remember that the [built-in
-administrator](../local-administrator/) is the way back in. That is what it is
-for.
+**The last working way in cannot be switched off or deleted.** The server
+refuses both, and says which provider it is — unless local sign-in is on,
+because the [built-in administrator](../local-administrator/) is the way back
+in and is re-created if deleted. That is what it is for.
 
 ## Every outcome is recorded
 

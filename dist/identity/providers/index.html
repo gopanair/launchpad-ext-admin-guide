@@ -137,13 +137,21 @@ no users, so nobody can reach the admin page to configure the way in.</strong></
 other and is <strong>read-only in the API</strong> — PATCH and DELETE are refused. Move it
 into the database when you have an administrator who can.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="disabling-and-deleting">Disabling and deleting</h2><a class="sl-anchor-link" href="#disabling-and-deleting"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Disabling and deleting”</span></a></div>
-<p><strong>Disabling is immediate.</strong> The provider disappears from the login page and its
-login route refuses. There is no cache to wait out.</p>
+<p><strong>Disabling is a switch in the provider’s row</strong>, beside the badge that says
+whether it is on the login page, and it is immediate: the provider disappears
+from the login page, its login route refuses, and so does its callback — a
+sign-in already in flight through it does not complete. There is no cache to
+wait out. Switching a provider off is its own row in the audit log, not an
+update like any other.</p>
+<p><strong>A provider’s kind is fixed.</strong> Edit its issuer, its client and its label; an
+OIDC provider cannot be turned into a GitHub one, or into a second password
+form.</p>
 <p><strong>Deleting a provider keeps every account it provisioned.</strong> Those people exist;
 they just have no way in through that door.</p>
-<p>Before you disable the last one, remember that the <a href="../local-administrator/">built-in
-administrator</a> is the way back in. That is what it is
-for.</p>
+<p><strong>The last working way in cannot be switched off or deleted.</strong> The server
+refuses both, and says which provider it is — unless local sign-in is on,
+because the <a href="../local-administrator/">built-in administrator</a> is the way back
+in and is re-created if deleted. That is what it is for.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="every-outcome-is-recorded">Every outcome is recorded</h2><a class="sl-anchor-link" href="#every-outcome-is-recorded"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Every outcome is recorded”</span></a></div>
 <p>Every authentication outcome — success, failure, lockout, refusal, expiry — is
 written to the audit log in its own <code dir="auto">session.*</code> family, never folded in with

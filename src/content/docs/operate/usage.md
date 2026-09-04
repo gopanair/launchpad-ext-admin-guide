@@ -14,6 +14,12 @@ Two things deliberately do not count as usage: a [reachability
 probe](../../security/reachability/), and a request marked as a scan. Both exist
 so quiet means something.
 
+Traffic through a personal key is listed under the person who holds it, by
+name, so an owner can tell who is hitting their app from a script.
+
+Days are cut at midnight **UTC**, whatever the browser's zone, so a window is
+the same window on every page and for every reader.
+
 ## What it costs
 
 CPU and memory, sampled per app, plus the estate's totals.

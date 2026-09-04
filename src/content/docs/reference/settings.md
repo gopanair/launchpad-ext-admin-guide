@@ -16,9 +16,14 @@ reference](../environment/). For the seven that are both, see [operating
 dials](../../config/operating-dials/).
 
 :::note
-`⌘K` finds any of these by name and takes you to the control. That is usually
-faster than this page.
+`⌘K` finds any of these by name — the words in any order, so `idle sleep` finds
+**Sleep idle apps after** — and takes you to the control. That is usually faster
+than this page.
 :::
+
+**Two administrators saving at once do not overwrite each other.** A save from
+a page that loaded before somebody else's save landed is refused as *settings
+changed* rather than applied over theirs. Reload, and save again.
 
 ## Admin → Settings
 

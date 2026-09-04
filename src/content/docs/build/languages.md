@@ -85,6 +85,14 @@ carries.
 times, and on some architectures it is the difference between a build and a
 failure.
 
+**The default is Posit Package Manager's `latest`, not a dated snapshot.** A
+date bought one thing — an app with no lockfile builds the same way twice — and
+charged for it in packages that do not exist yet: anything published after the
+date is absent rather than old, and a dependency refusal naming a fixed version
+could not be answered from a snapshot that predates it. If your estate has
+decided when it moves, pin a dated path here. The default cannot decide that for
+one that has not.
+
 **renv's cache is off**, deliberately. renv's default fills a library with links
 into a machine-global cache, and those links dangle in every pod.
 
